@@ -19,6 +19,7 @@
       "arrow-body-style": [0],
       "prefer-arrow-callback":[0],
       "import/no-extraneous-dependencies": "off",
-      "no-unused-vars": "off"
+      "no-unused-vars": "off",
+      "react/function-component-definition": [0]
     }
   }
