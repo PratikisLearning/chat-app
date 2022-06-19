@@ -125,4 +125,4 @@ const Bottom = () => {
   );
 };
 
-export default Bottom;
+export default Bottom;  
