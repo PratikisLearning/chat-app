@@ -8,6 +8,10 @@ export function getNameInitials(name) {
   return splitName[0][0];
 }
 
+export function transformToArr(snapVal) {
+  return snapVal ? Object.keys(snapVal) : [];
+}
+
 export function transformToArrWithId(snapVal) {
   return snapVal
     ? Object.keys(snapVal).map(roomId => {
@@ -27,7 +31,6 @@ export async function getUserUpdates(userId, keyToUpdate, value, db) {
     .equalTo(userId)
     .once('value');
 
-
   const getRooms = db
     .ref('/rooms')
     .orderByChild('lastMessage/author/uid')
@@ -36,19 +39,13 @@ export async function getUserUpdates(userId, keyToUpdate, value, db) {
 
   const [mSnap, rSnap] = await Promise.all([getMsgs, getRooms]);
 
-
   mSnap.forEach(msgSnap => {
-   
     updates[`/messages/${msgSnap.key}/author/${keyToUpdate}`] = value;
   });
 
-
-  
   rSnap.forEach(roomSnap => {
-    
     updates[`/rooms/${roomSnap.key}/lastMessage/author/${keyToUpdate}`] = value;
   });
-
 
   return updates;
 }
