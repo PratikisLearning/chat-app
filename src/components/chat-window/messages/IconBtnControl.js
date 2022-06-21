@@ -1,6 +1,8 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Badge, Whisper, Tooltip, IconButton, Icon } from 'rsuite';
 
+// eslint-disable-next-line react/function-component-definition
 const ConditionalBadge = ({ condition, children }) => {
   return condition ? <Badge content={condition}>{children}</Badge> : children;
 };
